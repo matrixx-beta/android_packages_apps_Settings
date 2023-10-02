@@ -43,21 +43,21 @@ public class LineageVersionDetailPreferenceController extends BasePreferenceCont
     private static final int ACTIVITY_TRIGGER_COUNT = 3;
 
     private static final String KEY_LINEAGE_VERSION_PROP = "ro.matrixx.build.version";
-     private static final String KEY_MATRIXX_BUILD_VERSION_PROP = "ro.modversion";
-     private static final String KEY_MATRIXX_DEVICE_PROP = "ro.matrixx.device";
-     private static final String KEY_MATRIXX_RELEASE_TYPE_PROP = "ro.matrixx.build.variant";
-     private static final String KEY_MATRIXX_RELEASE_VERSION_PROP = "ro.matrixx.display.version";
- 
-     private static final String PLATLOGO_PACKAGE_NAME = "com.android.egg";
-     private static final String PLATLOGO_ACTIVITY_CLASS =
+    private static final String KEY_MATRIXX_BUILD_VERSION_PROP = "ro.modversion";
+    private static final String KEY_MATRIXX_DEVICE_PROP = "ro.matrixx.device";
+    private static final String KEY_MATRIXX_RELEASE_TYPE_PROP = "ro.matrixx.release.type";
+    private static final String KEY_MATRIXX_RELEASE_VERSION_PROP = "ro.matrixx.display.version";
+    private static final String KEY_MATRIXX_VARIANT_PROP = "ro.matrixx.build.variant";
+    private static final String PLATLOGO_PACKAGE_NAME = "com.android.egg";
+    private static final String PLATLOGO_ACTIVITY_CLASS =
              PLATLOGO_PACKAGE_NAME + ".EasterEgg";
  
-     private final UserManager mUserManager;
-     private final long[] mHits = new long[ACTIVITY_TRIGGER_COUNT];
+    private final UserManager mUserManager;
+    private final long[] mHits = new long[ACTIVITY_TRIGGER_COUNT];
  
-     private RestrictedLockUtils.EnforcedAdmin mFunDisallowedAdmin;
-     private boolean mFunDisallowedBySystem;
-     private boolean fullRomVersion = false;
+    private RestrictedLockUtils.EnforcedAdmin mFunDisallowedAdmin;
+    private boolean mFunDisallowedBySystem;
+    private boolean fullRomVersion = false;
  
     public LineageVersionDetailPreferenceController(Context context, String key) {
         super(context, key);
@@ -127,11 +127,11 @@ public class LineageVersionDetailPreferenceController extends BasePreferenceCont
     private String shortRomVersion() {
         String romVersion = SystemProperties.get(KEY_MATRIXX_BUILD_VERSION_PROP,
                 this.mContext.getString(R.string.device_info_default));
-        String deviceCodename = SystemProperties.get(KEY_MATRIXX_DEVICE_PROP,
-                this.mContext.getString(R.string.device_info_default));
         String romReleasetype = SystemProperties.get(KEY_MATRIXX_RELEASE_TYPE_PROP,
                 this.mContext.getString(R.string.device_info_default));
-        String shortVersion = romVersion + " | " + deviceCodename + " | " + romReleasetype;
+        String romVariant = SystemProperties.get(KEY_MATRIXX_VARIANT_PROP,
+                this.mContext.getString(R.string.device_info_default));
+        String shortVersion = romVersion + " | " + romReleasetype + " | " + romVariant;
         return shortVersion;
     }
 
