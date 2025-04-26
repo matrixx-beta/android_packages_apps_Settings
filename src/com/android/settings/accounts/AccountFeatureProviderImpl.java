@@ -4,9 +4,6 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
 
-import com.android.settings.R;
-import com.android.settings.overlay.FeatureFactory;
-
 public class AccountFeatureProviderImpl implements AccountFeatureProvider {
     @Override
     public String getAccountType() {
