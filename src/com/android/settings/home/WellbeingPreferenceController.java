@@ -34,7 +34,7 @@ public class WellbeingPreferenceController extends BasePreferenceController {
 
     @Override
     public int getAvailabilityStatus() {
-        return com.android.internal.util.android.Utils.isPackageInstalled(mContext, 
+        return com.android.internal.util.crdroid.Utils.isPackageInstalled(mContext, 
             "com.google.android.apps.wellbeing") ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 

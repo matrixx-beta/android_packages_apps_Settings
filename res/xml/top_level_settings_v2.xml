@@ -52,9 +52,9 @@
 
         <com.android.settings.widget.HomepagePreference
             android:fragment="com.crdroid.settings.crDroidSettingsLayout"
-            android:icon="@drawable/ic_settings_cogs_filled"
+            android:icon="@drawable/ic_matrixx"
             android:key="top_level_crdroid"
-            android:order="-60"
+            android:order="-160"
             android:title="@string/crdroid_settings_title"
             android:summary="@string/crdroid_settings_summary"
             settings:controller="com.crdroid.settings.TopLevelSettingsPreferenceController"/>
@@ -261,7 +261,7 @@
 
         <com.android.settings.widget.HomepagePreference
             android:fragment="com.android.settings.accessibility.AccessibilitySettings"
-            android:icon="@drawable/ic_custom_settings_accessibility"
+            android:icon="@drawable/ic_settings_accessibility_filled"
             android:key="top_level_accessibility"
             android:order="-20"
             android:title="@string/accessibility_settings"
