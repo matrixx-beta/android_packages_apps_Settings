@@ -20,6 +20,14 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="top_level_settings">
 
+
+    <PreferenceCategory
+        android:order="-140"
+        android:key="top_level_account_category"
+        android:layout="@layout/settingslib_preference_category_no_title">
+
+    </PreferenceCategory>
+
     <PreferenceCategory
         android:order="-130"
         android:key="top_level_connectivity_category"
@@ -126,13 +134,6 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:order="-90"
-        android:key="top_level_account_category"
-        android:layout="@layout/settingslib_preference_category_no_title">
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:order="-110"
         android:key="top_level_system_info_category"
         android:layout="@layout/settingslib_preference_category_no_title">
@@ -174,16 +175,6 @@
             android:title="@string/header_category_system"
             android:summary="@string/system_dashboard_summary"
             settings:highlightableMenuKey="@string/menu_key_system"/>
-
-        <com.android.settings.widget.HomepagePreference
-            android:fragment="com.android.settings.deviceinfo.aboutphone.MyDeviceInfoFragment"
-            android:icon="@drawable/ic_settings_about_device_filled"
-            android:key="top_level_about_device"
-            android:order="-10"
-            android:title="@string/about_settings"
-            android:summary="@string/summary_placeholder"
-            settings:highlightableMenuKey="@string/menu_key_about_device"
-            settings:controller="com.android.settings.deviceinfo.aboutphone.TopLevelAboutDevicePreferenceController"/>
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -196,7 +187,7 @@
             android:key="top_level_wb"
             android:order="-51"
             android:title="@string/wellbeing_title"
-            android:summary="@string/summary_placeholder"
+            android:summary="@string/wellbeing_summary"
             settings:highlightableMenuKey="top_level_wellbeing"
             settings:controller="com.android.settings.home.WellbeingPreferenceController"/>
 
@@ -230,6 +221,16 @@
             settings:controller="com.android.settings.privacy.TopLevelPrivacyEntryPreferenceController"/>
 
         <com.android.settings.widget.HomepagePreference
+            android:fragment="com.android.settings.accessibility.AccessibilitySettings"
+            android:icon="@drawable/ic_settings_accessibility_filled"
+            android:key="top_level_accessibility"
+            android:order="-25"
+            android:title="@string/accessibility_settings"
+            android:summary="@string/accessibility_settings_summary"
+            settings:highlightableMenuKey="@string/menu_key_accessibility"
+            settings:controller="com.android.settings.accessibility.TopLevelAccessibilityPreferenceController"/>
+
+        <com.android.settings.widget.HomepagePreference
             android:fragment="com.android.settings.location.LocationSettings"
             android:icon="@drawable/ic_settings_location_filled"
             android:key="top_level_location"
@@ -260,14 +261,14 @@
             settings:highlightableMenuKey="@string/menu_key_emergency"/>
 
         <com.android.settings.widget.HomepagePreference
-            android:fragment="com.android.settings.accessibility.AccessibilitySettings"
-            android:icon="@drawable/ic_settings_accessibility_filled"
-            android:key="top_level_accessibility"
-            android:order="-20"
-            android:title="@string/accessibility_settings"
-            android:summary="@string/accessibility_settings_summary"
-            settings:highlightableMenuKey="@string/menu_key_accessibility"
-            settings:controller="com.android.settings.accessibility.TopLevelAccessibilityPreferenceController"/>
+            android:fragment="com.android.settings.deviceinfo.aboutphone.MyDeviceInfoFragment"
+            android:icon="@drawable/ic_settings_about_device_filled"
+            android:key="top_level_about_device"
+            android:order="20"
+            android:title="@string/about_settings"
+            android:summary="@string/summary_placeholder"
+            settings:highlightableMenuKey="@string/menu_key_about_device"
+            settings:controller="com.android.settings.deviceinfo.aboutphone.TopLevelAboutDevicePreferenceController"/>
 
         <com.android.settings.widget.HomepagePreference
             android:icon="@drawable/ic_help_filled"
