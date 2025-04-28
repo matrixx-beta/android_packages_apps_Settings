@@ -58,6 +58,7 @@ import com.android.settings.widget.HomepagePreferenceLayoutHelper.HomepagePrefer
 import com.android.settingslib.core.instrumentation.Instrumentable;
 import com.android.settingslib.drawer.Tile;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.settings.widget.MatrixxHomepagePreference;
 
 @SearchIndexable(forTarget = MOBILE)
 public class TopLevelSettings extends DashboardFragment implements SplitLayoutListener,
@@ -245,41 +246,61 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     private void onSetPrefCard() {
         final PreferenceScreen screen = getPreferenceScreen();
         final int count = screen.getPreferenceCount();
+    
         for (int i = 0; i < count; i++) {
             final Preference preference = screen.getPreference(i);
-
-            String key = preference.getKey();
+    
+            if (!(preference instanceof MatrixxHomepagePreference)) {
+                continue; // Skip if not our custom MatrixxHomepagePreference
+            }
+    
+            MatrixxHomepagePreference matrixxPref = (MatrixxHomepagePreference) preference;
+            String key = matrixxPref.getKey();
+    
+            if (key == null) continue; // just safe check
+    
             if (key.equals("top_level_network")
-            	|| key.equals("top_level_apps")
-            	|| key.equals("top_level_accessibility")
-            	|| key.equals("top_level_emergency")
-                || key.equals("top_level_system")){
-                preference.setLayoutResource(R.layout.matrixx_dashboard_preference_top);
+                || key.equals("top_level_apps")
+                || key.equals("top_level_accessibility")
+                || key.equals("top_level_emergency")
+                || key.equals("top_level_system")) {
+                
+                matrixxPref.setCustomLayoutResource(R.layout.matrixx_dashboard_preference_top);
+    
             } else if (key.equals("top_level_battery")
-            	|| key.equals("top_level_display")
-            	|| key.equals("top_level_security")
-            	|| key.equals("top_level_privacy")
-            	|| key.equals("top_level_safety_center")
-            	|| key.equals("top_level_storage")
+                || key.equals("top_level_display")
+                || key.equals("top_level_security")
+                || key.equals("top_level_privacy")
+                || key.equals("top_level_safety_center")
+                || key.equals("top_level_storage")
                 || key.equals("top_level_wallpaper")
-            	|| key.equals("top_level_wellbeing")
-            	|| key.equals("top_level_notifications")){
-                preference.setLayoutResource(R.layout.matrixx_dashboard_preference_middle);
-            } else if (key.equals("top_level_google")){
+                || key.equals("top_level_wellbeing")
+                || key.equals("top_level_notifications")) {
+                
+                matrixxPref.setCustomLayoutResource(R.layout.matrixx_dashboard_preference_middle);
+    
+            } else if (key.equals("top_level_google")) {
+    
                 if (gAppsExists && screen.findPreference("dashboard_tile_pref_com.google.android.gms.backup.component.BackupOrRestoreSettingsActivity") != null) {
-                    preference.setLayoutResource(R.layout.matrixx_dashboard_preference_google_v2);
-                }  else {
-                    preference.setLayoutResource(R.layout.matrixx_dashboard_preference_google);
+                    matrixxPref.setCustomLayoutResource(R.layout.matrixx_dashboard_preference_google_v2);
+                } else {
+                    matrixxPref.setCustomLayoutResource(R.layout.matrixx_dashboard_preference_google);
                 }
-            } else if (key.equals("top_level_accounts") && gAppsExists){
-                preference.setLayoutResource(R.layout.matrixx_dashboard_preference_middle);
+    
+            } else if (key.equals("top_level_accounts") && gAppsExists) {
+    
+                matrixxPref.setCustomLayoutResource(R.layout.matrixx_dashboard_preference_middle);
+    
             } else if (key.equals("top_level_crdroid")) {
-                preference.setLayoutResource(R.layout.matrixx_dashboard_preference_single);
+    
+                matrixxPref.setCustomLayoutResource(R.layout.matrixx_dashboard_preference_single);
+    
+            } else {
+    
+                matrixxPref.setCustomLayoutResource(R.layout.matrixx_dashboard_preference_bottom);
+    
             }
-            else {
-                preference.setLayoutResource(R.layout.matrixx_dashboard_preference_bottom);
-            }
-       }
+        }
     }
 
     @Override
