@@ -20,6 +20,10 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="top_level_settings">
 
+   <Preference
+       android:key="revamp"
+       android:visible="false" />
+
     <PreferenceCategory
         android:order="-130"
         android:key="top_level_connectivity_category"
@@ -157,6 +161,13 @@
             android:summary="@string/summary_placeholder"
             settings:highlightableMenuKey="@string/menu_key_storage"
             settings:controller="com.android.settings.deviceinfo.TopLevelStoragePreferenceController"/>
+
+        <com.android.settings.widget.HomepagePreference
+	    android:key="top_level_backup"
+	    android:title="@string/backup_title"
+	    android:summary="@string/backup_summary"
+	    android:icon="@drawable/ic_backup"
+	    settings:controller="com.android.settings.backup.MyBackupPreferenceController" />
 
         <com.android.settings.widget.HomepagePreference
             android:fragment="com.android.settings.fuelgauge.batteryusage.PowerUsageSummary"
