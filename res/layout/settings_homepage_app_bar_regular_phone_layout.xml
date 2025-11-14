@@ -17,16 +17,19 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/colorBackground"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/title_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/homepage_title_margin_top"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
         <TextView
             android:id="@+id/homepage_title"
@@ -44,12 +47,9 @@
             android:accessibilityTraversalAfter="@id/homepage_title"
             android:contentDescription="@string/search_bar_account_avatar_content_description" />
     </LinearLayout>
-
-    <LinearLayout
-	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
-	android:paddingTop="28dp">
 	
-   	<include layout="@layout/search_bar"/>
-    </LinearLayout>
+   	<include
+           android:id="@+id/search_bar_container"
+       	   layout="@layout/search_bar"
+           app:layout_scrollFlags="enterAlways" />
 </LinearLayout>
