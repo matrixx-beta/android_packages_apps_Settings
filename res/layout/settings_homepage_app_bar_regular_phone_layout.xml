@@ -45,6 +45,11 @@
             android:contentDescription="@string/search_bar_account_avatar_content_description" />
     </LinearLayout>
 
-    <include layout="@layout/search_bar"/>
-
+    <LinearLayout
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:paddingTop="28dp">
+	
+   	<include layout="@layout/search_bar"/>
+    </LinearLayout>
 </LinearLayout>
