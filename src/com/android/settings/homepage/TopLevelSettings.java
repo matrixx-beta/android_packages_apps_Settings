@@ -231,10 +231,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         super.onCreatePreferences(savedInstanceState, rootKey);
-        boolean isrevamp = getPreferenceScreen().findPreference("revamp") != null;
-        if (isrevamp) {
-            HideGmsBackupPref();
-        }
+         HidePref();
         if (Flags.homepageRevamp()) {
             iteratePreferences(preference -> {
                 if (Flags.homepageRevamp()) {
@@ -256,14 +253,22 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         });
     }
 
-    private void HideGmsBackupPref() {
-        iteratePreferences(preference -> {
-            if (preference.getKey() == null) return;
+    private void HidePref() {
+        boolean isrevamp = getPreferenceScreen().findPreference("revamp") != null;
+        iteratePreferences(preference  -> {
+            String prefKey = preference.getKey();
+            if (prefKey == null) return;
 
-            if ("dashboard_tile_pref_com.google.android.gms.backup.component.BackupOrRestoreSettingsActivity"
-                    .equals(preference.getKey())) {
-                preference.setVisible(false);
+            if (prefKey.startsWith("dashboard_tile_pref_com.google.android.gms")
+               && prefKey.toLowerCase().contains("account")) {
+               preference.setVisible(false);
             }
+            if (isrevamp && prefKey.equals("dashboard_tile_pref_com.google.android.gms.backup.component.BackupOrRestoreSettingsActivity")) {
+               preference.setVisible(false);
+            }
+            if (prefKey.equals("top_level_google")) {
+               preference.setVisible(false);
+	    }
         });
     }
 
