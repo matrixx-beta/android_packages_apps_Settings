@@ -254,7 +254,6 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     }
 
     private void HidePref() {
-        boolean isrevamp = getPreferenceScreen().findPreference("revamp") != null;
         iteratePreferences(preference  -> {
             String prefKey = preference.getKey();
             if (prefKey == null) return;
@@ -263,7 +262,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                && prefKey.toLowerCase().contains("account")) {
                preference.setVisible(false);
             }
-            if (isrevamp && prefKey.equals("dashboard_tile_pref_com.google.android.gms.backup.component.BackupOrRestoreSettingsActivity")) {
+            if (prefKey.equals("dashboard_tile_pref_com.google.android.gms.backup.component.BackupOrRestoreSettingsActivity")) {
                preference.setVisible(false);
             }
             if (prefKey.equals("top_level_google")) {

@@ -20,10 +20,6 @@
     xmlns:settings="http://schemas.android.com/apk/res-auto"
     android:key="top_level_settings">
 
-   <Preference
-       android:key="revamp"
-       android:visible="false" />
-
     <PreferenceCategory
         android:order="-130"
         android:key="top_level_connectivity_category"
